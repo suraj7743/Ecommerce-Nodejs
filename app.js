@@ -6,6 +6,12 @@ app.set("view-engine", "ejs");
 app.get("/", (req, res) => {
   return res.render("index.ejs");
 });
+app.get("/register", (req, res) => {
+  return res.render("register.ejs");
+});
+app.post("/register", (req, res) => {
+  return res.send("Form submitted ");
+});
 app.listen(8000, () => {
   console.log("listening to server 8000 ");
 });
