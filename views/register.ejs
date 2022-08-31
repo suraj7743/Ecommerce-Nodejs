@@ -6,6 +6,12 @@
     <%- include('./partial/nav')%>
     <div class="container mt-5">
     <form method="post" action="/register">
+      <h1>Registration </h1>
+      <% if (message) { %>
+        <div class="alert alert-success" role="alert">
+          <%=message%>
+        </div>
+      <% } %>
         <div class="mb-3">
           <label for="Name" class="form-label">Name <sup text-dark>*</sup></label>
           <input type="text" class="form-control" id="exampleInputEmail1" name="name" required>
