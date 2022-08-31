@@ -1,11 +1,12 @@
 const express = require("express");
 const app = express();
 
+app.set("view-engine", "ejs");
 app.get("/", (req, res) => {
-  return res.send("hello world ");
+  return res.render("index.ejs");
 });
 app.listen(8000, () => {
-  console.log("listening to server 3000 ");
+  console.log("listening to server 8000 ");
 });
 
 module.exports = app;
