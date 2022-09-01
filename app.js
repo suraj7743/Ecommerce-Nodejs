@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require("body-parser");
 require("./utils/db.config");
 app.use(bodyParser.urlencoded({ extended: false }));
-const userModel = require("./models/userModel");
 
 app.set("view-engine", "ejs");
 const router = require("./routes/userRouter");

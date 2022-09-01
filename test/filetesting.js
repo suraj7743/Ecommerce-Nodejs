@@ -18,3 +18,15 @@ describe("make sure that status is 200 ", () => {
       });
   });
 });
+describe("make sure that req.body  is present in post register ", () => {
+  it("should return 400 error ", (done) => {
+    chai
+      .request(app)
+      .post("/register")
+      .end((err, res) => {
+        res.should.have.status(400);
+        // res.body.should.be.a("object");
+        done();
+      });
+  });
+});
