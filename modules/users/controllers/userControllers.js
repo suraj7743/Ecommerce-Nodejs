@@ -28,7 +28,6 @@ const postRegister = catchAsync(async (req, res, next) => {
     error.details.forEach((element) => {
       Errorstack.push(element.message);
     });
-    console.log(Errorstack);
     return res.render("register.ejs", {
       message: null,
       Errorstack,

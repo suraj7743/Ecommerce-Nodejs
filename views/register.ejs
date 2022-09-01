@@ -15,7 +15,7 @@
 
       <% if (Errorstack) { %>
         <% Errorstack.forEach(element=>{%>
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-danger" role="alert">
           <%=element%>
         </div>
         <%})%>
@@ -34,6 +34,10 @@
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password <sup class="text-danger">*</sup></label>
           <input type="password" class="form-control"  name="password" id="exampleInputPassword1" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"> Confirm Password <sup class="text-danger">*</sup></label>
+          <input type="password" class="form-control"  name="Confirm_password" id="exampleInputPassword1" required>
         </div>
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
