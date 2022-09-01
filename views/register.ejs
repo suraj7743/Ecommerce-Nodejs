@@ -12,6 +12,16 @@
           <%=message%>
         </div>
       <% } %>
+
+      <% if (Errorstack) { %>
+        <% Errorstack.forEach(element=>{%>
+        <div class="alert alert-success" role="alert">
+          <%=element%>
+        </div>
+        <%})%>
+      <% } %>
+
+
         <div class="mb-3">
           <label for="Name" class="form-label">Name <sup class="text-danger">*</sup></label>
           <input type="text" class="form-control" id="exampleInputEmail1" name="name" required>

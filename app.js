@@ -9,6 +9,17 @@ const router = require("./routes/userRouter");
 //for user route
 app.use("/", router);
 
+//catching error from next(error )
+app.use((err, req, res, next) => {
+  err.statuscode = err.statuscode || 500;
+  err.status = err.status || "error";
+  console.log(err.message);
+  res.status(err.statuscode).json({
+    status: err.status,
+    message: err.message,
+  });
+});
+
 app.listen(8000, () => {
   console.log("listening to server 8000 ");
 });
