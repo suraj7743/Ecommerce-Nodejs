@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partial/header')%>
+  
+  <body>
+    <%- include('./partial/nav')%>
+    <div class="container mt-5">
+    <form method="post" action="/login">
+      <h1>LOGIN </h1>
+      <% if (message) { %>
+        <div class="alert alert-success" role="alert">
+          <%=message%>
+        </div>
+      <% } %>
+
+      <% if (Errorstack) { %>
+        <% Errorstack.forEach(element=>{%>
+        <div class="alert alert-danger" role="alert">
+          <%=element%>
+        </div>
+        <%})%>
+      <% } %>
+
+
+       
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address <sup class="text-danger">*</sup></label>
+          <input type="email" class="form-control" name="email" id="exampleInputEmail1"  required>
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password <sup class="text-danger">*</sup></label>
+          <input type="password" class="form-control"  name="password" id="exampleInputPassword1" required>
+        </div>
+       
+        
+        <button type="submit" class="btn btn-primary" >Submit</button>
+      </form>
+    </div>
+
+
+
+
+    <%- include('./partial/footer')%>
+</html>

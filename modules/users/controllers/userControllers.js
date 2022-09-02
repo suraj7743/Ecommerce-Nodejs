@@ -38,6 +38,20 @@ const postRegister = catchAsync(async (req, res, next) => {
   // res.send(value);
   return res.render("register.ejs", {
     message: "Registration successfull ",
+    Errorstack: null,
+  });
+});
+
+const getLogin = catchAsync(async (req, res, next) => {
+  return res.render("login.ejs", {
+    message: null,
+    Errorstack: null,
+  });
+});
+const postLogin = catchAsync(async (req, res, next) => {
+  return res.render("login.ejs", {
+    message: "Login successfull",
+    Errorstack: null,
   });
 });
 
@@ -46,4 +60,6 @@ module.exports = {
   homepage,
   getRegister,
   postRegister,
+  getLogin,
+  postLogin,
 };
