@@ -2,6 +2,7 @@ const userModel = require("../models/userModel");
 const catchAsync = require("../../../middleware/asyncwrapper");
 const validateSchmea = require("../../validation/validation");
 const catchError = require("../../../error/catchError");
+const passport = require("passport");
 
 //homepage
 const homepage = catchAsync(async (req, res, next) => {
@@ -48,6 +49,13 @@ const getLogin = catchAsync(async (req, res, next) => {
     Errorstack: null,
   });
 });
+
+//passportauthenticate
+const passportAuthenticate = passport.authenticate("local", {
+  successRedirect: "/login-success",
+  failureRedirect: "/login-failed",
+});
+
 const postLogin = catchAsync(async (req, res, next) => {
   return res.render("login.ejs", {
     message: "Login successfull",
@@ -61,5 +69,6 @@ module.exports = {
   getRegister,
   postRegister,
   getLogin,
+  passportAuthenticate,
   postLogin,
 };
