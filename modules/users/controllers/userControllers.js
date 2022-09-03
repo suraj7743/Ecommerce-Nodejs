@@ -47,14 +47,20 @@ const getLogin = catchAsync(async (req, res, next) => {
 
 //passportauthenticate
 const passportAuthenticate = passport.authenticate("local", {
-  successRedirect: "/login-success",
-  failureRedirect: "/login-failed",
+  successRedirect: "/homepage",
+  failureRedirect: "/login",
 });
 
 const postLogin = catchAsync(async (req, res, next) => {
   return res.render("login.ejs", {
     message: "Login successfull",
     Errorstack: null,
+  });
+});
+const Logout = catchAsync(async (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next();
+    return redirect("/login");
   });
 });
 
@@ -66,4 +72,5 @@ module.exports = {
   getLogin,
   passportAuthenticate,
   postLogin,
+  Logout,
 };
