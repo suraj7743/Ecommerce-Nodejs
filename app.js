@@ -12,6 +12,7 @@ const passport = require("passport");
 require("./utils/localStrategy");
 
 app.set("view-engine", "ejs");
+
 const router = require("./routes/userRouter");
 app.use(
   session({
@@ -26,6 +27,7 @@ app.use(
 //initalize the passport
 app.use(passport.initialize());
 app.use(passport.session());
+
 //for user route
 app.use("/", router);
 

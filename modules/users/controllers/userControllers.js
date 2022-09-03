@@ -3,6 +3,9 @@ const catchAsync = require("../../../middleware/asyncwrapper");
 const validateSchmea = require("../../validation/validation");
 const catchError = require("../../../error/catchError");
 const passport = require("passport");
+const bcrypt = require("bcrypt");
+
+//bcrypt compare
 
 //homepage
 const homepage = catchAsync(async (req, res, next) => {
@@ -11,10 +14,7 @@ const homepage = catchAsync(async (req, res, next) => {
 
 //registerpage
 const getRegister = catchAsync(async (req, res, next) => {
-  return res.render("register.ejs", {
-    message: null,
-    Errorstack: null,
-  });
+  return res.render("register.ejs");
 });
 
 //postregisterPage
@@ -30,7 +30,6 @@ const postRegister = catchAsync(async (req, res, next) => {
       Errorstack.push(element.message);
     });
     return res.render("register.ejs", {
-      message: null,
       Errorstack,
     });
   }
@@ -39,15 +38,11 @@ const postRegister = catchAsync(async (req, res, next) => {
   // res.send(value);
   return res.render("register.ejs", {
     message: "Registration successfull ",
-    Errorstack: null,
   });
 });
 
 const getLogin = catchAsync(async (req, res, next) => {
-  return res.render("login.ejs", {
-    message: null,
-    Errorstack: null,
-  });
+  return res.render("login.ejs");
 });
 
 //passportauthenticate
