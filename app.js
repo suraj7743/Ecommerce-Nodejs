@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv").config();
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
+
 require("./utils/db.config");
+const Mongodbconnection = require("./utils/db.config");
 app.use(bodyParser.urlencoded({ extended: false }));
 const passport = require("passport");
 require("./utils/localStrategy");
@@ -11,10 +15,11 @@ app.set("view-engine", "ejs");
 const router = require("./routes/userRouter");
 app.use(
   session({
-    secret: "may be some text written as keyword cat ",
+    secret: process.env.SESSION_SECRECT,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
+    store: MongoStore.create(Mongodbconnection),
   })
 );
 
@@ -35,7 +40,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8000, () => {
+app.listen(process.env.PORT || 8000, () => {
   console.log("listening to server Port 8000 ");
 });
 
