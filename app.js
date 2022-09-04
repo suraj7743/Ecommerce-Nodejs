@@ -12,6 +12,7 @@ const passport = require("passport");
 require("./utils/localStrategy");
 
 app.set("view-engine", "ejs");
+app.use(express.static("public"));
 
 const router = require("./routes/userRouter");
 app.use(
@@ -36,10 +37,14 @@ app.use((err, req, res, next) => {
   err.statuscode = err.statuscode || 500;
   err.status = err.status || "error";
   console.log(err.message);
-  res.status(err.statuscode).json({
-    status: err.status,
-    message: err.message,
-  });
+  // res.status(err.statuscode).json({
+  //   status: err.status,
+  //   message: err.message,
+  // });
+  res.render("404.ejs");
+});
+app.use((req, res, next) => {
+  res.render("404.ejs");
 });
 
 app.listen(process.env.PORT || 8000, () => {
